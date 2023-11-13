@@ -24,10 +24,10 @@ $maxAttempts = $conf.maxAttempts
 
 
 
-Write-Host "監視するフォルダ: $folder"
 Write-Host "フィルター: $filter"
 Write-Host "クールダウン: $cooldown"
 Write-Host "最大試行回数: $maxAttempts"
+
 
 
 # Discordにファイルをアップロードするための関数
