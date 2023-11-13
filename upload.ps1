@@ -1,6 +1,8 @@
 ﻿#configファイル から読み込む
 $conf_file = "config.ini"
-$conf_content = (Get-Content $conf_file) -replace "\\", "\\\\"
+# ファイルを改行コード入りの文字列として読み込む & バックスラッシュエスケープ
+$conf_content = [System.IO.File]::ReadAllText($conf_file) -replace "\\", "\\\\"
+# ハッシュテーブルに変換する
 $conf = $conf_content | ConvertFrom-StringData
 
 
