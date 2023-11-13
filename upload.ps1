@@ -39,10 +39,8 @@ function  upload($URL, $filePath, $try_count = 0) {
         # レスポンスヘッダからステータスコードを取得
         $status_code = $response[0].Split(" ")[1]
 
-        Write-Host $status_code
-
         # Discordにファイルを送信が成功したら
-        if ($status_code[0] -eq 1 -or $status_code[0] -eq 2 ) {
+        if ($status_code -lt 300 ) {
             Write-Host "Discordにファイルを送信できました"
             Start-Sleep $cooldown # クールダウン
         }
