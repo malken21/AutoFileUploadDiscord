@@ -30,7 +30,7 @@ Write-Host "クールダウン: $cooldown"
 Write-Host "最大試行回数: $maxAttempts"
 
 
-
+# Discordにファイルをアップロードするための関数
 function  upload($URL, $filePath, $try_count = 0) {
     try {
         # Discord の Webhook にファイルを送信する
@@ -39,7 +39,7 @@ function  upload($URL, $filePath, $try_count = 0) {
         # レスポンスヘッダからステータスコードを取得
         $status_code = $response[0].Split(" ")[1]
 
-        # Discordにファイルを送信が成功したら
+        # Discordにファイルの送信が成功したら
         if ($status_code -lt 300 ) {
             Write-Host "Discordにファイルを送信できました"
             Start-Sleep $cooldown # クールダウン
