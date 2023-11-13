@@ -11,3 +11,21 @@ start.bat を実行すると起動します。
 初期設定の config.ini では png ファイルのみ 監視しています。
 
 filter の項目で どのファイルを監視するかを正規表現で設定できます。
+
+### config.ini の初期値
+```ini
+# 監視するフォルダ
+folder = フォルダのパス
+
+# webhookのURL
+URL = DiscordのWebhookのURL
+
+# ファイルの拡張子を指定
+filter = *.png
+
+# Discordにファイルを送信してから次のファイルを送信するまでの待機時間
+cooldown = 3
+
+# Discordにファイルの送信が失敗した場合、何回までファイルを送信することを試みるか
+maxAttempts = 5
+```
