@@ -1,0 +1,2 @@
+# AutoFileUploadDiscord
+ 指定したフォルダを監視して新しくファイルが作成されたらDiscordのWebhookでアップロードする
