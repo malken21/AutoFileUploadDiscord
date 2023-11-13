@@ -47,7 +47,8 @@ function  upload($URL, $filePath, $try_count = 0) {
         else {
             Write-Host "Discordにファイルを送信できませんでした"
             Start-Sleep $cooldown # クールダウン
-            if ( $try_count -lt $maxAttempts) { upload $URL $filePath $try_count+1 }
+            $try_count++
+            if ( $try_count -lt $maxAttempts) { upload $URL $filePath $try_count }
         }
     }
     catch {
