@@ -1,10 +1,12 @@
 # AutoFileUploadDiscord
 
-指定したフォルダを監視して新しくファイルが作成されたら Discord の Webhook でアップロードする
+指定したフォルダを監視して新しくファイルが作成されたら Discord の Webhook でアップロードする。
 
-config.ini で 監視するフォルダ、フィルター、Discord の Webhook の URL などを設定してください
+config.ini で 監視するフォルダ、フィルター、Discord の Webhook の URL などを設定してください。
 
 start.bat を実行すると起動します。
+
+ダウンロードして使う場合、upload.ps1 と start.bat のファイルのブロックを解除する必要があります。
 
 ## config.ini について
 
