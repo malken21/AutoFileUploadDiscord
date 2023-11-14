@@ -18,7 +18,7 @@ $filter = $conf.filter
 # Discordにファイルを送信してから次のファイルを送信するまでの待機時間
 $cooldown = [double] $conf.cooldown
 # Discordにファイルの送信が失敗した場合、何回までファイルを送信することを試みるか
-$maxAttempts = [int] $conf.maxAttempts
+$maxRetry = [int] $conf.maxRetry
 
 #=====設定項目===== end
 
@@ -26,7 +26,7 @@ $maxAttempts = [int] $conf.maxAttempts
 
 Write-Host "フィルター: $filter"
 Write-Host "クールダウン: $cooldown"
-Write-Host "最大試行回数: $maxAttempts"
+Write-Host "最大再試行回数: $maxRetry"
 
 
 
@@ -47,7 +47,7 @@ function  upload($URL, $filePath, $try_count = 0) {
         else {
             Write-Host "Discordにファイルを送信できませんでした"
             Start-Sleep $cooldown # クールダウン
-            if ( $try_count -lt $maxAttempts) {
+            if ( $try_count -lt $maxRetry) {
                 $try_count++
                 upload $URL $filePath $try_count
             }
