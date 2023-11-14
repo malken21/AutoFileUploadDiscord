@@ -40,7 +40,7 @@ function  upload($URL, $filePath, $try_count = 0) {
         $status_code = [int] $response[0].Split(" ")[1]
 
         # Discordにファイルの送信が成功したら
-        if ($status_code -lt 300 ) {
+        if ($status_code -le 300 ) {
             Write-Host "Discordにファイルを送信できました"
             Start-Sleep $cooldown # クールダウン
         }
@@ -48,7 +48,7 @@ function  upload($URL, $filePath, $try_count = 0) {
             Write-Host "Discordにファイルを送信できませんでした"
             Start-Sleep $cooldown # クールダウン
             $try_count++
-            if ( $try_count -lt $maxAttempts) { upload $URL $filePath $try_count }
+            if ( $try_count -le $maxAttempts) { upload $URL $filePath $try_count }
         }
     }
     catch {
