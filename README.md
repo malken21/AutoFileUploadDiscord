@@ -15,7 +15,9 @@ start.bat を実行すると起動します。
 filter の項目で どのファイルを監視するかを正規表現で設定できます。
 
 ### config.ini の初期値
+
 ```ini
+
 # 監視するフォルダ
 folder = フォルダのパス
 
@@ -29,5 +31,6 @@ filter = *.png
 cooldown = 3
 
 # Discordにファイルの送信が失敗した場合、何回までファイルを送信することを試みるか
-maxAttempts = 5
+maxRetry = 3
+
 ```
