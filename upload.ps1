@@ -84,14 +84,12 @@ Register-ObjectEvent $watcher "Created" -Action {
 
     # ファイルの名前を取得
     $fileName = $Event.SourceEventArgs.Name
-
-    # ファイルにアクセスできるまで 待機
-    while (-not (isFileAccess $filePath)) { Start-Sleep 1 }
-
     # コンソールに表示する
     Write-Host "$(Get-Date), $fileName"
     # ファイルのパスを取得
     $filePath = $Event.SourceEventArgs.FullPath
+    # ファイルにアクセスできるまで 待機
+    while (-not (isFileAccess $filePath)) { Start-Sleep 1 }
     # Discordにアップロードする
     upload $URL $filePath
 
