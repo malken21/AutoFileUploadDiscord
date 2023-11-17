@@ -37,7 +37,7 @@ function  upload($URL, $filePath, $try_count = 0) {
         # curl.exeを実行し、レスポンスヘッダとボディを変数に格納
         $response = curl.exe -i -F "file=@$filePath" $URL
         # レスポンスヘッダからステータスコードを取得
-        $status_code = [int] $response[0].Split(" ")[1]
+        $status_code = [int] $response[1].Split(" ")[1]
 
         # Discordにファイルの送信が成功したら
         if ($status_code -lt 400) {
