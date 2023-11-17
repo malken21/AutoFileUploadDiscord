@@ -30,6 +30,20 @@ Write-Host "最大再試行回数: $maxRetry"
 
 
 
+# ファイルにアクセスできるかどうかチェックする関数
+function isFileAccess($filePath) {
+    try {
+        # 読み取りモードでファイルにアクセスして すぐに閉じる
+        $fileStream = [System.IO.FileStream]::new($filePath, [System.IO.FileMode]::Open, [System.IO.FileAccess]::Read, [System.IO.FileShare]::None)
+        $fileStream.Close()
+        return $true # アクセスできたら true
+    }
+    catch [System.IO.IOException] {
+        return $false # アクセスできなかったら false
+    }
+}
+
+
 # Discordにファイルをアップロードするための関数
 function  upload($URL, $filePath, $try_count = 0) {
     try {
@@ -70,6 +84,10 @@ Register-ObjectEvent $watcher "Created" -Action {
 
     # ファイルの名前を取得
     $fileName = $Event.SourceEventArgs.Name
+
+    # ファイルにアクセスできるまで 待機
+    while (-not (isFileAccess $filePath)) { Start-Sleep 1 }
+
     # コンソールに表示する
     Write-Host "$(Get-Date), $fileName"
     # ファイルのパスを取得
