@@ -35,7 +35,7 @@ function  upload($URL, $filePath, $try_count = 0) {
     try {
         # Discord の Webhook にファイルを送信する
         # curl.exeを実行し、レスポンスヘッダとボディを変数に格納
-        $response = curl.exe -i -F "file=@$filePath" $URL
+        $response = curl.exe -i -H "Expect:" -F "file=@$filePath" $URL
         # レスポンスヘッダからステータスコードを取得
         $status_code = [int] $response[0].Split(" ")[1]
 
